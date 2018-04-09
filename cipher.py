@@ -32,27 +32,14 @@ def cipher(cipher_name, secret_key, enc_dec, input_file, output_file):
     for line in file:
         intext += line
     file.close()
-    '''
-    while len(intext) % 16 != 0:
-        intext += 'x'
-    
-    chunks = [0 for x in range(len(intext) / 16)]
-    z = 0W
-    for i in range(0, len(intext), 16):
-        chunks[z] = intext[i:i+16]
-        z += 1
-    '''
+
     options[cipher_name][0](secret_key)
 
     outtext = options[cipher_name][1][enc_dec](intext)
-    '''
-    for i in range(len(chunks)):
-        outtext = options[cipher_name][1][enc_dec](chunks[i])
-    '''
+
     file = open(output_file, "w+")
     file.write(outtext)
     file.close
-
 
 if __name__ == "__main__":
     a = str(sys.argv[1])
